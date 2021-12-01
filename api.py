@@ -1,5 +1,4 @@
 from flask import Flask , jsonify , request
-from flask_restful import Api
 import time
 import mysql.connector
 
@@ -16,7 +15,7 @@ mydb = mysql.connector.connect(
 
 
 app = Flask(__name__)
-api = Api(app)
+
 
 @app.route("/test" , methods = ['GET'])
 def testX():
