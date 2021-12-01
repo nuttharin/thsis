@@ -76,6 +76,8 @@ def getallenc():
         "data" : strd
     })  
 
+@app.route("/get/encDGHV/all" , methods = ['GET'])
+def getallencDGHV():
 
 if __name__ == "__main__":
     app.run(host= "192.168.0.103" ,debug=True , port=5000)
