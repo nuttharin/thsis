@@ -77,9 +77,25 @@ def getallenc():
 
 @app.route("/get/encDGHV/all" , methods = ['GET'])
 def getallencDGHV():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_raw_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd = '__EXECUTION_TIME__' + str(diff)
+
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "data" : strd
+    })  
 
 if __name__ == "__main__":
-    app.run(host= "192.168.0.103" ,debug=True , port=5000)
+    app.run(host= "158.108.207.221" ,debug=True , port=5000)
     #app.run(host="192.168.250.12" ,debug=True , port=5000)
 
     # app.run(debug=True , port=5000)
