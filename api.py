@@ -82,7 +82,7 @@ def getallraw20000():
         "status": "success",
         "statusCode": 201 ,
         "time" : strd 
-        ,"data" :str(myresult)
+        # ,"data" :str(myresult)
     })  
 
 
