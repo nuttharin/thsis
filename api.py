@@ -1,4 +1,5 @@
 from flask import Flask , jsonify , request
+from flask_restful import Api
 import time
 import mysql.connector
 
@@ -15,7 +16,7 @@ mydb = mysql.connector.connect(
 
 
 app = Flask(__name__)
-
+api = Api(app)
 
 @app.route("/test" , methods = ['GET'])
 def testX():
@@ -37,7 +38,7 @@ def testX():
         "data" : strd
     })  
 
-@app.route("/get/simple/all" , methods = ['GET'])
+@app.route("/get/enc/all" , methods = ['GET'])
 def getallsimple():
     start = time.time()
 
@@ -56,7 +57,7 @@ def getallsimple():
         "data" : strd
     })  
 
-@app.route("/get/enc/all" , methods = ['GET'])
+@app.route("/get/simple/all" , methods = ['GET'])
 def getallenc():
     start = time.time()
 
@@ -75,13 +76,13 @@ def getallenc():
         "data" : strd
     })  
 
-@app.route("/get/encDGHV/all" , methods = ['GET'])
+@app.route("/get/dghv/all" , methods = ['GET'])
 def getallencDGHV():
     start = time.time()
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_raw_20000`")
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_20000`")
 
     myresult = mycursor.fetchall()
     diff = time.time() - start
@@ -94,8 +95,11 @@ def getallencDGHV():
         "data" : strd
     })  
 
+
+
+
 if __name__ == "__main__":
-    app.run(host= "10.0.0.3" ,debug=True , port=5000)
+    app.run(host= "192.168.0.103" ,debug=True , port=5000)
     #app.run(host="192.168.250.12" ,debug=True , port=5000)
 
     # app.run(debug=True , port=5000)
