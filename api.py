@@ -81,8 +81,8 @@ def getallraw20000():
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "time" : strd ,
-        "data" :str(myresult)
+        "time" : strd 
+        # "data" :str(myresult)
     })  
 
 
