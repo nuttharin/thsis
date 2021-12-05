@@ -20,7 +20,7 @@ mydb = mysql.connector.connect(
 
 app = Flask(__name__)
 cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
-cache.init_app(app, config={'CACHE_TYPE': 'SimpleCache'})
+cache.init_app(app)
 
 # cache.init_app(app)
 
