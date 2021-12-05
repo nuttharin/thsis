@@ -19,8 +19,8 @@ mydb = mysql.connector.connect(
 
 
 app = Flask(__name__)
-cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
-cache.init_app(app)
+# cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
+# cache.init_app(app)
 
 # cache.init_app(app)
 
@@ -84,7 +84,7 @@ def getallraw20000():
     myresult = mycursor.fetchall()
     diff = time.time() - start
     strd =  str(diff)
-    cache.clear()
+    # cache.clear()
         
     return jsonify({ 
         "status": "success",
