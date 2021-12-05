@@ -16,7 +16,6 @@ mydb = mysql.connector.connect(
 
 
 app = Flask(__name__)
-api = Api(app)
 
 @app.route("/test" , methods = ['GET'])
 def testX():
