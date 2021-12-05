@@ -1,4 +1,6 @@
 from flask import Flask , jsonify , request
+from flask_caching import Cache
+
 
 # from flask_restful import Api
 import time
@@ -17,7 +19,9 @@ mydb = mysql.connector.connect(
 
 
 app = Flask(__name__)
-app.config["CACHE_TYPE"] = "null"
+cache = Cache(config={'CACHE_TYPE': 'SimpleCache'})
+cache.init_app(app, config={'CACHE_TYPE': 'SimpleCache'})
+
 # cache.init_app(app)
 
 
