@@ -50,15 +50,15 @@ def getallsimple():
     myresult = mycursor.fetchall()
     diff = time.time() - start
     strd =  str(diff)
-
+    print(myresult)
         
-    return jsonify({ 
-        "status": "success",
-        "statusCode": 201 ,
-        "time" : strd ,
-        "data" : json.dumps(myresult)
+    # return jsonify({ 
+    #     "status": "success",
+    #     "statusCode": 201 ,
+    #     "time" : strd ,
+    #     "data" : json.dumps(myresult)
 
-    })  
+    # })  
 
 @app.route("/get/simple/all" , methods = ['GET'])
 def getallenc():
