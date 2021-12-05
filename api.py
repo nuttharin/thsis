@@ -34,7 +34,8 @@ def testX():
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "data" : strd
+        "time" : strd ,
+        "data" : myresult
     })  
 
 @app.route("/get/enc/all" , methods = ['GET'])
@@ -47,13 +48,15 @@ def getallsimple():
 
     myresult = mycursor.fetchall()
     diff = time.time() - start
-    strd = '__EXECUTION_TIME__' + str(diff)
+    strd =  str(diff)
 
         
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "data" : strd
+        "time" : strd ,
+        "data" : myresult
+
     })  
 
 @app.route("/get/simple/all" , methods = ['GET'])
@@ -66,13 +69,14 @@ def getallenc():
 
     myresult = mycursor.fetchall()
     diff = time.time() - start
-    strd = '__EXECUTION_TIME__' + str(diff)
+    strd =  str(diff)
 
         
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "data" : strd
+        "time" : strd ,
+        "data" : myresult
     })  
 
 @app.route("/get/dghv/all" , methods = ['GET'])
@@ -91,7 +95,8 @@ def getallencDGHV():
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "data" : strd
+        "time" : strd ,
+        "data" : myresult
     })  
 
 
