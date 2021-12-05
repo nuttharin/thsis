@@ -64,8 +64,8 @@ def getallsimple20000():
 
 
 
-@app.route("/get/simple/all/20000" , methods = ['GET'])
-def getallenc20000():
+@app.route("/get/simple/all" , methods = ['GET'])
+def getallraw20000():
     start = time.time()
 
     mycursor = mydb.cursor()
