@@ -40,7 +40,29 @@ def testX():
     })  
 
 @app.route("/get/enc/all" , methods = ['GET'])
-def getallsimple():
+def getallsimple20000():
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000` LIMIT 0,"+str(rows))
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })  
+
+@app.route("/get/enc/all/40000" , methods = ['GET'])
+def getallsimple40000():
     start = time.time()
 
     mycursor = mydb.cursor()
@@ -58,10 +80,179 @@ def getallsimple():
         "time" : strd ,
         "data" : str(myresult)
 
-    })  
+    })
 
-@app.route("/get/simple/all" , methods = ['GET'])
-def getallenc():
+@app.route("/get/enc/all/60000" , methods = ['GET'])
+def getallsimple60000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/80000" , methods = ['GET'])
+def getallsimple80000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/100000" , methods = ['GET'])
+def getallsimple100000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/120000" , methods = ['GET'])
+def getallsimple120000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/140000" , methods = ['GET'])
+def getallsimple140000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/160000" , methods = ['GET'])
+def getallsimple160000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/180000" , methods = ['GET'])
+def getallsimple180000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+@app.route("/get/enc/all/200000" , methods = ['GET'])
+def getallsimple200000():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_20000`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd ,
+        "data" : str(myresult)
+
+    })
+
+
+@app.route("/get/simple/all/20000" , methods = ['GET'])
+def getallenc20000():
     start = time.time()
 
     mycursor = mydb.cursor()
@@ -79,6 +270,8 @@ def getallenc():
         "time" : strd ,
         "data" :str(myresult)
     })  
+
+
 
 @app.route("/get/dghv/all" , methods = ['GET'])
 def getallencDGHV():
