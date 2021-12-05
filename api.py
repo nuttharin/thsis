@@ -76,7 +76,7 @@ def getallraw20000():
     myresult = mycursor.fetchall()
     diff = time.time() - start
     strd =  str(diff)
-
+    cache.clear()
         
     return jsonify({ 
         "status": "success",
