@@ -18,7 +18,7 @@ mydb = mysql.connector.connect(
 
 app = Flask(__name__)
 app.config["CACHE_TYPE"] = "null"
-cache.init_app(app)
+# cache.init_app(app)
 
 
 
