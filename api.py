@@ -127,7 +127,7 @@ def getallsimple20000max():
     mycursor.execute("SELECT MAX(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchone()
-    print(myresult)
+    print(myresult[0])
 
     # d = (c % p) % power(2,l) 
     diff = time.time() - start
