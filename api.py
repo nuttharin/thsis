@@ -234,7 +234,7 @@ def getallsimple20000sum():
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+    mycursor.execute("SELECT SUM(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
     # print(myresult[0])
