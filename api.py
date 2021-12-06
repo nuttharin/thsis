@@ -246,7 +246,7 @@ def getallsimple20000sum():
     
     diff = time.time() - start
     strd =  diff
-    print(d)
+    print(mysum)
       
     return jsonify({ 
         "status": "success",
