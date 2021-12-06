@@ -266,7 +266,7 @@ def getallraw20000sum():
     mycursor.execute("SELECT SUM(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
-    # print(myresult)
+    print(myresult)
     
 
     diff = time.time() - start
