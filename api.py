@@ -175,7 +175,7 @@ def getallraw20000max():
     })  
 
 @app.route("/get/enc/all/min" , methods = ['GET'])
-def getallsimple20000max():
+def getallsimple20000min():
     start = time.time()
     rows = request.args.get('rows')
     print(rows)
@@ -200,7 +200,7 @@ def getallsimple20000max():
     })  
 
 @app.route("/get/simple/all/min" , methods = ['GET'])
-def getallraw20000max():
+def getallraw20000min():
     start = time.time()
 
     mycursor = mydb.cursor()
