@@ -13,6 +13,15 @@ mydb = mysql.connector.connect(
     database="DGHV"
 )
 
+def power(base, exponent):
+    # Base Case
+    if exponent == 0 :
+        return 1
+    
+    # Recursive Case
+    else :
+        return base * power(base, exponent - 1)
+
 p = 1000000000000000000000000000000000000000000000000000000000000001
 
 l = 64
