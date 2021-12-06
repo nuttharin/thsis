@@ -239,6 +239,7 @@ def getallsimple20000sum():
     myresult = mycursor.fetchall()
     # print(myresult[0])
     for row in myresult:
+        print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
         mysum = mysum + d
 
