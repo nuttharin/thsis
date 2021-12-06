@@ -129,7 +129,7 @@ def getallsimple20000max():
     myresult = mycursor.fetchone()
     print(myresult[0])
 
-    # d = (c % p) % power(2,l) 
+    d = (myresult[0] % p) % power(2,l) 
     diff = time.time() - start
     strd =  str(diff)
     # print(myresult)
