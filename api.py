@@ -140,7 +140,7 @@ def getallsimple20000max():
 
     d = ((myresult[0] % p) % power(2,l))/1000
     diff = time.time() - start
-    strd =  str(diff)
+    strd =  diff
     print(d)
       
     return jsonify({ 
@@ -164,7 +164,7 @@ def getallraw20000max():
     print(myresult)
 
     diff = time.time() - start
-    strd =  str(diff)
+    strd =  diff
     # cache.clear()
         
     return jsonify({ 
