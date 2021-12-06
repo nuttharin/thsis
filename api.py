@@ -238,7 +238,7 @@ def getallsimple20000sum():
 
     myresult = mycursor.fetchall()
     # print(myresult[0])
-    for row in records:
+    for row in myresult:
         d = ((row[0] % p) % power(2,l))/1000
         mysum = mysum + d
 
