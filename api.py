@@ -174,6 +174,54 @@ def getallraw20000max():
         # ,"data" :str(myresult)
     })  
 
+@app.route("/get/enc/all/min" , methods = ['GET'])
+def getallsimple20000max():
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult[0])
+
+    d = ((myresult[0] % p) % power(2,l))/1000
+    diff = time.time() - start
+    strd =  diff
+    print(d)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # "data" : str(myresult)
+
+    })  
+
+@app.route("/get/simple/all/min" , methods = ['GET'])
+def getallraw20000max():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult)
+
+    diff = time.time() - start
+    strd =  diff
+    # cache.clear()
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # ,"data" :str(myresult)
+    })  
+
 
 
 if __name__ == "__main__":
