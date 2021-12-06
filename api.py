@@ -125,7 +125,7 @@ def getallencDGHV():
         # ,"data" : str(myresult)
     })  
 
-
+# ================= MAX ======================================
 @app.route("/get/enc/all/max" , methods = ['GET'])
 def getallsimple20000max():
     start = time.time()
@@ -173,7 +173,9 @@ def getallraw20000max():
         "time" : strd 
         # ,"data" :str(myresult)
     })  
+# ============================================================
 
+# ================= MIN ======================================
 @app.route("/get/enc/all/min" , methods = ['GET'])
 def getallsimple20000min():
     start = time.time()
@@ -221,9 +223,115 @@ def getallraw20000min():
         "time" : strd 
         # ,"data" :str(myresult)
     })  
+# ============================================================
 
+# ================= SUM ======================================
+@app.route("/get/enc/all/sum" , methods = ['GET'])
+def getallsimple20000sum():
+    mysum = 0
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
 
+    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
+    myresult = mycursor.fetchall()
+    # print(myresult[0])
+    for row in records:
+        d = ((row[0] % p) % power(2,l))/1000
+        mysum = mysum + d
+
+    mycursor.close()
+    
+    diff = time.time() - start
+    strd =  diff
+    print(d)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # "data" : str(myresult)
+
+    })  
+
+@app.route("/get/simple/all/sum" , methods = ['GET'])
+def getallraw20000sum():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT SUM(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
+
+    myresult = mycursor.fetchall()
+    # print(myresult)
+    
+
+    diff = time.time() - start
+    strd =  diff
+    # cache.clear()
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # ,"data" :str(myresult)
+    })
+ 
+# ============================================================
+
+# ================= AVG ======================================
+@app.route("/get/enc/all/avg" , methods = ['GET'])
+def getallsimple20000avg():
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult[0])
+
+    d = ((myresult[0] % p) % power(2,l))/1000
+    diff = time.time() - start
+    strd =  diff
+    print(d)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # "data" : str(myresult)
+
+    })  
+
+@app.route("/get/simple/all/avg" , methods = ['GET'])
+def getallraw20000avg():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult)
+
+    diff = time.time() - start
+    strd =  diff
+    # cache.clear()
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # ,"data" :str(myresult)
+    })
+ 
+# ============================================================
 if __name__ == "__main__":
     app.run(host= "10.0.0.3" ,debug=True , port=5000)
     #app.run(host="192.168.250.12" ,debug=True , port=5000)
