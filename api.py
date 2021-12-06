@@ -13,6 +13,11 @@ mydb = mysql.connector.connect(
     database="DGHV"
 )
 
+p = 1000000000000000000000000000000000000000000000000000000000000001
+
+l = 64
+q= 99
+r= 251314668
 
 
 
@@ -68,9 +73,6 @@ def getallsimple20000():
 
     })  
 
-
-
-
 @app.route("/get/simple/all" , methods = ['GET'])
 def getallraw20000():
     start = time.time()
@@ -100,20 +102,68 @@ def getallencDGHV():
 
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_20000`")
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
     diff = time.time() - start
-    strd = '__EXECUTION_TIME__' + str(diff)
+    strd =  str(diff)
 
         
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "time" : strd ,
-        "data" : str(myresult)
+        "time" : strd 
+        # ,"data" : str(myresult)
     })  
 
+
+@app.route("/get/enc/all/max" , methods = ['GET'])
+def getallsimple20000max():
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT MAX(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult)
+
+    # d = (c % p) % power(2,l) 
+    diff = time.time() - start
+    strd =  str(diff)
+    # print(myresult)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # "data" : str(myresult)
+
+    })  
+
+@app.route("/get/simple/all/max" , methods = ['GET'])
+def getallraw20000max():
+    start = time.time()
+
+    mycursor = mydb.cursor()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT MAX(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
+
+    myresult = mycursor.fetchone()
+    print(myresult)
+
+    diff = time.time() - start
+    strd =  str(diff)
+    # cache.clear()
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # ,"data" :str(myresult)
+    })  
 
 
 
