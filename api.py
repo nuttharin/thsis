@@ -141,7 +141,7 @@ def getallsimple20000max():
     d = (myresult[0] % p) % power(2,l) 
     diff = time.time() - start
     strd =  str(diff)
-    # print(myresult)
+    print(d)
       
     return jsonify({ 
         "status": "success",
