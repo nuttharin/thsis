@@ -229,6 +229,7 @@ def getallraw20000min():
 @app.route("/get/enc/all/sum" , methods = ['GET'])
 def getallsimple20000sum():
     mysum = 0
+    mysumEnc = 0
     start = time.time()
     rows = request.args.get('rows')
     print(rows)
@@ -237,17 +238,23 @@ def getallsimple20000sum():
     mycursor.execute("SELECT SUM(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
+    # cMaxint = p * q + power(2,l) * r + mMaxint
+    # temp = math.floor(c/cMaxint) 
+    # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
     # print(myresult[0])
     for row in myresult:
         print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
         mysum = mysum + d
+        mysumEnc = mysumEnc + row[0]
 
     mycursor.close()
     
     diff = time.time() - start
     strd =  diff
     print(mysum)
+    print("=====")
+    print(((mysumEnc % p) % power(2,l))/1000)
       
     return jsonify({ 
         "status": "success",
