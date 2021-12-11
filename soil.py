@@ -36,7 +36,7 @@ r= 251314668
 
 mycursor = mydb.cursor()
 # query = "SELECT * FROM `DGHV`.`austin_weather` LIMIT 0,100"
-query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 1 AND 200000"
+query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 1 AND 100000"
 # query = "SELECT * FROM `WHO-COVID-19-global-data`"
 
 mycursor.execute(query)
@@ -46,7 +46,7 @@ print(len(myresult))
 print(myresult)
 print(myresult[1])
 # INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_20000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES ('1', 1, 1, 1, '1')
-query2 = "INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_raw_200000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES  "
+query2 = "INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_raw_100000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES  "
 queryValue = ""
 arrM = []
 j = 0

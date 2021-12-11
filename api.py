@@ -235,26 +235,30 @@ def getallsimple20000sum():
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT SUM(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"` LIMIT 1,10")
 
     myresult = mycursor.fetchall()
     # cMaxint = p * q + power(2,l) * r + mMaxint
     # temp = math.floor(c/cMaxint) 
     # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
-    # print(myresult[0])
-    for row in myresult:
-        print(row[0])
-        d = ((row[0] % p) % power(2,l))/1000
-        mysum = mysum + d
-        mysumEnc = mysumEnc + row[0]
+    print(myresult[0])
+    print((( myresult[0] % p) % power(2,l))/1000 )
+    # print(len(myresult))
+    # for row in myresult:
+    #     # print(row[0])
+    #     d = ((row[0] % p) % power(2,l))/1000
+    #     print(d)
+    #     mysum = mysum + d
+    #     mysumEnc = mysumEnc + row[0]
 
-    mycursor.close()
+    # mycursor.close()
     
-    diff = time.time() - start
-    strd =  diff
-    print(mysum)
-    print("=====")
-    print(((mysumEnc % p) % power(2,l))/1000)
+    # diff = time.time() - start
+    # strd =  diff
+    # print(mysum)
+    # print("=====")
+    # print(len(mysumEnc))
+    # print(((mysumEnc % p) % power(2,l))/1000)
       
     return jsonify({ 
         "status": "success",
@@ -293,21 +297,29 @@ def getallraw20000sum():
 # ================= AVG ======================================
 @app.route("/get/enc/all/avg" , methods = ['GET'])
 def getallsimple20000avg():
+    mysum = 0
+    mysumEnc= 0
+    avg = 0
     start = time.time()
     rows = request.args.get('rows')
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+    mycursor.execute("SELECT soil1 as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchone()
-    print(myresult[0])
+    # print(myresult[0])
 
-    d = ((myresult[0] % p) % power(2,l))/1000
+    
+    for row in myresult:
+        # print(row[0])
+        d = ((row[0] % p) % power(2,l))/1000
+        print(d)
+        mysum = mysum + d
+
+    avg = mysum/len(myresult)
     diff = time.time() - start
     strd =  diff
-    print(d)
-      
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
@@ -341,8 +353,8 @@ def getallraw20000avg():
  
 # ============================================================
 if __name__ == "__main__":
-    app.run(host= "10.0.0.3" ,debug=True , port=5000)
-    #app.run(host="192.168.250.12" ,debug=True , port=5000)
+    # app.run(host= "10.0.0.3" ,debug=True , port=5000)
+    app.run(host="192.168.0.103" ,debug=True , port=5000)
 
     # app.run(debug=True , port=5000)
 print("start")
