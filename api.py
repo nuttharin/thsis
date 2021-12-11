@@ -302,7 +302,7 @@ def getallsimple20000avg():
     avg = 0
     start = time.time()
     rows = request.args.get('rows')
-    print(rows)
+    # print(rows)
     mycursor = mydb.cursor()
 
     mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
@@ -317,6 +317,7 @@ def getallsimple20000avg():
         mysum = mysum + d
 
     avg = mysum/len(myresult)
+    print(agv)
     diff = time.time() - start
     strd =  diff
     return jsonify({ 
