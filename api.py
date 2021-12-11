@@ -235,7 +235,7 @@ def getallsimple20000sum():
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"` LIMIT 1,10")
+    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
     # cMaxint = p * q + power(2,l) * r + mMaxint
