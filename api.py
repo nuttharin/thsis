@@ -241,21 +241,21 @@ def getallsimple20000sum():
     # cMaxint = p * q + power(2,l) * r + mMaxint
     # temp = math.floor(c/cMaxint) 
     # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
-    print(myresult[0])
-    print((( myresult[0] % p) % power(2,l))/1000 )
-    # print(len(myresult))
-    # for row in myresult:
-    #     # print(row[0])
-    #     d = ((row[0] % p) % power(2,l))/1000
-    #     print(d)
-    #     mysum = mysum + d
-    #     mysumEnc = mysumEnc + row[0]
+    # print(myresult[0])
+    # print((( myresult[0] % p) % power(2,l))/1000 )
+    print(len(myresult))
+    for row in myresult:
+        # print(row[0])
+        d = ((row[0] % p) % power(2,l))/1000
+        print(d)
+        mysum = mysum + d
+        # mysumEnc = mysumEnc + row[0]
 
-    # mycursor.close()
+    mycursor.close()
     
-    # diff = time.time() - start
-    # strd =  diff
-    # print(mysum)
+    diff = time.time() - start
+    strd =  diff
+    print(mysum)
     # print("=====")
     # print(len(mysumEnc))
     # print(((mysumEnc % p) % power(2,l))/1000)
@@ -312,7 +312,7 @@ def getallsimple20000avg():
 
     
     for row in myresult:
-        # print(row[0])
+        print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
         print(d)
         mysum = mysum + d
