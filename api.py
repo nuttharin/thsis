@@ -305,16 +305,15 @@ def getallsimple20000avg():
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT soil1 as maxv FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
-    myresult = mycursor.fetchone()
-    # print(myresult[0])
-
+    myresult = mycursor.fetchall()
     
+    print(len(myresult))
     for row in myresult:
-        print(row[0])
+        # print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
-        print(d)
+        # print(d)
         mysum = mysum + d
 
     avg = mysum/len(myresult)
