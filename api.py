@@ -317,7 +317,7 @@ def getallsimple20000avg():
         mysum = mysum + d
 
     avg = mysum/len(myresult)
-    print(agv)
+    print(avg)
     diff = time.time() - start
     strd =  diff
     return jsonify({ 
