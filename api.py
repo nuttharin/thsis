@@ -323,7 +323,7 @@ def getallsimple20000avg():
             d = ((row[0] % p) % power(2,l))/1000
             # print(d)
             mysum = mysum + d
-            # mysumEnc = mysumEnc + row[0]
+            mysumEnc = mysumEnc + row[0]
         diff = time.time() - start
         strd =  diff
         print(strd)
@@ -331,7 +331,8 @@ def getallsimple20000avg():
         
        
         i = i + 1
-    # print(mysum)
+    d = ((mysumEnc % p) % power(2,l))/1000
+    print(d)
     # print("=====")
     # print(len(mysumEnc))
     # print(((mysumEnc % p) % power(2,l))/1000)
