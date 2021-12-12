@@ -297,31 +297,70 @@ def getallraw20000sum():
 # ================= AVG ======================================
 @app.route("/get/enc/all/avg" , methods = ['GET'])
 def getallsimple20000avg():
+    # mysum = 0
+    # avg = 0
+    # lenN = 0
+    # start = time.time()
+    # rows = request.args.get('rows')
+    # # print(rows)
+    # mycursor = mydb.cursor()
+
+    # mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+
+    # myresult = mycursor.fetchall()
+    
+    # # print(len(myresult))
+    # for row in myresult:
+    #     # print(row[0])
+    #     d = ((row[0] % p) % power(2,l))/1000
+    #     # print(d)
+    #     mysum = mysum + d
+    #     lenN = lenN + 1
+
+    # mycursor.close()
+    # # avg = mysum/lenN
+    # # print(avg)
+    # diff = time.time() - start
+    # strd =  diff
+    # return jsonify({ 
+    #     "status": "success",
+    #     "statusCode": 201 ,
+    #     "time" : strd 
+    #     # "data" : str(myresult)
+
+    # })  
     mysum = 0
-    avg = 0
-    lenN = 0
+    mysumEnc = 0
     start = time.time()
     rows = request.args.get('rows')
-    # print(rows)
+    print(rows)
     mycursor = mydb.cursor()
 
     mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
     myresult = mycursor.fetchall()
-    
-    # print(len(myresult))
+    # cMaxint = p * q + power(2,l) * r + mMaxint
+    # temp = math.floor(c/cMaxint) 
+    # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
+    # print(myresult[0])
+    # print((( myresult[0] % p) % power(2,l))/1000 )
+    print(len(myresult))
     for row in myresult:
         # print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
         # print(d)
         mysum = mysum + d
-        lenN = lenN + 1
+        # mysumEnc = mysumEnc + row[0]
 
     mycursor.close()
-    # avg = mysum/lenN
-    # print(avg)
+    
     diff = time.time() - start
     strd =  diff
+    # print(mysum)
+    # print("=====")
+    # print(len(mysumEnc))
+    # print(((mysumEnc % p) % power(2,l))/1000)
+      
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
