@@ -228,34 +228,37 @@ def getallraw20000min():
 # ================= SUM ======================================
 @app.route("/get/enc/all/sum" , methods = ['GET'])
 def getallsimple20000sum():
-    
-    mysum = 0
-    mysumEnc = 0
-    start = time.time()
-    rows = request.args.get('rows')
-    print(rows)
-    mycursor = mydb.cursor()
+    i = 0
+    while i < 5:
+        mysum = 0
+        mysumEnc = 0
+        start = time.time()
+        rows = request.args.get('rows')
+        print(rows)
+        mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+        mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
 
-    myresult = mycursor.fetchall()
-    # cMaxint = p * q + power(2,l) * r + mMaxint
-    # temp = math.floor(c/cMaxint) 
-    # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
-    # print(myresult[0])
-    # print((( myresult[0] % p) % power(2,l))/1000 )
-    # print(len(myresult))
-    for row in myresult:
-        # print(row[0])
-        d = ((row[0] % p) % power(2,l))/1000
-        # print(d)
-        mysum = mysum + d
-        # mysumEnc = mysumEnc + row[0]
+        myresult = mycursor.fetchall()
+        # cMaxint = p * q + power(2,l) * r + mMaxint
+        # temp = math.floor(c/cMaxint) 
+        # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
+        # print(myresult[0])
+        # print((( myresult[0] % p) % power(2,l))/1000 )
+        # print(len(myresult))
+        for row in myresult:
+            # print(row[0])
+            d = ((row[0] % p) % power(2,l))/1000
+            # print(d)
+            mysum = mysum + d
+            # mysumEnc = mysumEnc + row[0]
 
-    mycursor.close()
-    
-    diff = time.time() - start
-    strd =  diff
+        mycursor.close()
+        
+        diff = time.time() - start
+        strd =  diff
+        print(strd)
+        i = i+1
     # print(mysum)
     # print("=====")
     # print(len(mysumEnc))
