@@ -255,7 +255,7 @@ def getallsimple20000sum():
     
     diff = time.time() - start
     strd =  diff
-    print(mysum)
+    # print(mysum)
     # print("=====")
     # print(len(mysumEnc))
     # print(((mysumEnc % p) % power(2,l))/1000)
@@ -334,10 +334,10 @@ def getallraw20000avg():
     mycursor = mydb.cursor()
     rows = request.args.get('rows')
     print(rows)
-    mycursor.execute("SELECT MIN(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
+    mycursor.execute("SELECT AVG(soil1) as maxv FROM `IoT.Input.SinghaS1.17_raw_"+str(rows)+"`")
 
     myresult = mycursor.fetchone()
-    print(myresult)
+    print(myresult[0])
 
     diff = time.time() - start
     strd =  diff
