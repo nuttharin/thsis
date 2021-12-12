@@ -321,7 +321,9 @@ def getallsimple20000avg():
             # print(d)
             mysum = mysum + d
             # mysumEnc = mysumEnc + row[0]
-
+        diff = time.time() - start
+        strd =  diff
+        print(strd)
         mycursor.close()
         
         diff = time.time() - start
