@@ -299,6 +299,7 @@ def getallraw20000sum():
 def getallsimple20000avg():
     mysum = 0
     avg = 0
+    lenN = 0
     start = time.time()
     rows = request.args.get('rows')
     # print(rows)
@@ -308,15 +309,16 @@ def getallsimple20000avg():
 
     myresult = mycursor.fetchall()
     
-    print(len(myresult))
+    # print(len(myresult))
     for row in myresult:
         # print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
         # print(d)
         mysum = mysum + d
+        lenN = lenN + 1
 
     mycursor.close()
-    avg = mysum/len(myresult)
+    avg = mysum/lenN
     # print(avg)
     diff = time.time() - start
     strd =  diff
