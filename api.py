@@ -315,6 +315,7 @@ def getallsimple20000avg():
         # print(d)
         mysum = mysum + d
 
+    mycursor.close()
     avg = mysum/len(myresult)
     # print(avg)
     diff = time.time() - start
