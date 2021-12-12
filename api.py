@@ -298,7 +298,6 @@ def getallraw20000sum():
 @app.route("/get/enc/all/avg" , methods = ['GET'])
 def getallsimple20000avg():
     mysum = 0
-    mysumEnc= 0
     avg = 0
     start = time.time()
     rows = request.args.get('rows')
@@ -317,7 +316,7 @@ def getallsimple20000avg():
         mysum = mysum + d
 
     avg = mysum/len(myresult)
-    print(avg)
+    # print(avg)
     diff = time.time() - start
     strd =  diff
     return jsonify({ 
