@@ -321,7 +321,7 @@ def getallsimple20000avg():
         # print((( myresult[0] % p) % power(2,l))/1000 
         x = 0
         for row in myresult:
-            # print(row[0])
+            print(row[0])
             d = ((row[0] % p) % power(2,l))/1000
             # print(d)
             mysum = mysum + d
