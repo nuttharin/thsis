@@ -305,6 +305,7 @@ def getallsimple20000avg():
     while i<5 :
         mysum = 0
         mysumEnc = 0
+        mysumEncDe = 0
         start = time.time()
         rows = request.args.get('rows')
         print(rows)
@@ -317,13 +318,18 @@ def getallsimple20000avg():
         # temp = math.floor(c/cMaxint) 
         # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
         # print(myresult[0])
-        # print((( myresult[0] % p) % power(2,l))/1000 )
+        # print((( myresult[0] % p) % power(2,l))/1000 
+        x = 0
         for row in myresult:
             # print(row[0])
             d = ((row[0] % p) % power(2,l))/1000
             # print(d)
             mysum = mysum + d
             mysumEnc = mysumEnc + row[0]
+            x = x + 1
+            if x%10 == 0 : 
+                mysumEncDe = mysumEncDe + ((mysumEnc % p) % power(2,l))/1000
+                mysumEnc = 0
         diff = time.time() - start
         strd =  diff
         print(strd)
