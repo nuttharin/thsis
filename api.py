@@ -344,7 +344,6 @@ def getallsimple20000avg():
     # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
     # print(myresult[0])
     # print((( myresult[0] % p) % power(2,l))/1000 )
-    print(len(myresult))
     for row in myresult:
         # print(row[0])
         d = ((row[0] % p) % power(2,l))/1000
