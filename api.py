@@ -326,6 +326,7 @@ def getallsimple20000avg():
             # print(d)
             mysum = mysum + d
             mysumEnc = mysumEnc + row[0]
+            print(mysumEnc)
             x = x + 1
             if x%10 == 0 : 
                 mysumEncDe = mysumEncDe + ((mysumEnc % p) % power(2,l))/1000
