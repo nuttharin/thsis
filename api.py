@@ -253,6 +253,7 @@ def getallsimple20000sum():
             # print(d)
             mysum = mysum + d
             mysumEnc = mysumEnc + Decimal(row[0])
+        print("--------")
         print(mysumEnc)
         mycursor.close()
         
