@@ -28,7 +28,7 @@ p = 1000000000000000000000000000000000000000000000000000000000000001
 l = 64
 q= 99
 r= 251314668
-
+powerInt = power(2,l)
 
 
 
@@ -249,11 +249,11 @@ def getallsimple20000sum():
         # print(len(myresult))
         for row in myresult:
             # print(row[0])
-            d = ((row[0] % p) % power(2,l))/1000
+            d = ((row[0] % p) % powerInt)/1000
             # print(d)
             mysum = mysum + d
             # mysumEnc = mysumEnc + row[0]
-
+        print(sum(myresult))
         mycursor.close()
         
         diff = time.time() - start
