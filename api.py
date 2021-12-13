@@ -252,8 +252,8 @@ def getallsimple20000sum():
             d = ((row[0] % p) % powerInt)/1000
             # print(d)
             mysum = mysum + d
-            # mysumEnc = mysumEnc + row[0]
-        print(sum(myresult))
+            mysumEnc = mysumEnc + Decimal(row[0])
+        print(mysumEnc)
         mycursor.close()
         
         diff = time.time() - start
