@@ -264,9 +264,9 @@ def getallsimple20000sum():
             print(xx)
 
         print("--------")
-        print()
-        print(len(str(mysumEnc)))
-        print(((mysumEnc % p) % powerInt)/1000)
+        print(xx)
+        # print(len(str(mysumEnc)))
+        # print(((mysumEnc % p) % powerInt)/1000)
         mycursor.close()
         
         diff = time.time() - start
