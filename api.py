@@ -30,6 +30,9 @@ q= 99
 r= 251314668
 powerInt = power(2,l)
 
+maxint = p * q + power(2,l) * r + 9223372036854775807
+
+
 
 
 app = Flask(__name__)
@@ -233,6 +236,7 @@ def getallsimple20000sum():
     while i < 5:
         mysum = 0
         mysumEnc = 0
+        xx = 0
         start = time.time()
         rows = request.args.get('rows')
         print(rows)
@@ -252,8 +256,15 @@ def getallsimple20000sum():
             d = ((row[0] % p) % powerInt)/1000
             # print(d)
             mysum = mysum + d
+             
             mysumEnc = mysumEnc + Decimal(row[0])
+            if mysumEnc > maxint :
+                xx = xx + ((mysumEnc % p) % powerInt)/1000
+                mysumEnc = 0
+            print(xx)
+
         print("--------")
+        print()
         print(len(str(mysumEnc)))
         print(((mysumEnc % p) % powerInt)/1000)
         mycursor.close()
