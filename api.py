@@ -394,6 +394,10 @@ def getallraw20000avg():
     # you can calculate percentage of available memory
     print(psutil.virtual_memory().available * 100 / psutil.virtual_memory().total)
     # 20.8
+
+    print(psutil.cpu_percent())
+    print(psutil.virtual_memory())  # physical memory usage
+    print('memory % used:', psutil.virtual_memory()[2])
             
     return jsonify({ 
         "status": "success",
