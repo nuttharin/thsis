@@ -1,5 +1,7 @@
 from flask import Flask , jsonify , request
 from decimal import Decimal
+import psutil
+
 
 
 # from flask_restful import Api
@@ -381,7 +383,18 @@ def getallraw20000avg():
     diff = time.time() - start
     strd =  diff
     # cache.clear()
-        
+    print(psutil.cpu_percent())
+    # gives an object with many fields
+    psutil.virtual_memory()
+    # you can convert that object to a dictionary 
+    print(dict(psutil.virtual_memory()._asdict()))
+    # you can have the percentage of used RAM
+    print(psutil.virtual_memory().percent)
+    # 79.2
+    # you can calculate percentage of available memory
+    print(psutil.virtual_memory().available * 100 / psutil.virtual_memory().total)
+    # 20.8
+            
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
