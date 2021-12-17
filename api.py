@@ -109,7 +109,26 @@ def getallraw20000():
         # ,"data" :str(myresult)
     })  
 
+@app.route("/get/dghv/all" , methods = ['GET'])
+def getallraw20000():
+    start = time.time()
 
+    mycursor = mydb.cursor()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
+
+    myresult = mycursor.fetchall()
+    diff = time.time() - start
+    strd =  str(diff)
+    # cache.clear()
+        
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # ,"data" :str(myresult)
+    })  
 
 @app.route("/get/dghv/all" , methods = ['GET'])
 def getallencDGHV():
