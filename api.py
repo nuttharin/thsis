@@ -110,7 +110,7 @@ def getallraw20000():
     })  
 
 @app.route("/get/dghv/all" , methods = ['GET'])
-def getallraw20000():
+def getalldghv20000():
     start = time.time()
 
     mycursor = mydb.cursor()
