@@ -288,6 +288,61 @@ def getallsimple20000sum():
 
     })  
 
+@app.route("/get/dghv/all/sum" , methods = ['GET'])
+def getallsimple20000sum():
+    i = 0
+    while i < 5:
+        mysum = 0
+        mysumEnc = 0
+        xx = 0
+        integer_sum = 0
+        start = time.time()
+        rows = request.args.get('rows')
+        print(rows)
+        mycursor = mydb.cursor()
+
+        mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_"+str(rows)+"`")
+
+        myresult = mycursor.fetchall()
+        # cMaxint = p * q + power(2,l) * r + mMaxint
+        # temp = math.floor(c/cMaxint) 
+        # print((c-(temp*cMaxint)) % p % power(2,l) + ((temp*mMaxint)))
+        # print(myresult[0])
+        # print((( myresult[0] % p) % power(2,l))/1000 )
+        # print(len(myresult))
+        for row in myresult:
+            # print(row[0])
+            d = ((row[0] % p) % powerInt)/1000
+            # print(d)
+            mysum = mysum + d
+             
+            integer_sum = int(bin(integer_sum), 2) + int(row[0], 2)
+            binary_sum = bin(integer_sum)
+            print(binary_sum)
+
+        print("--------")
+        print(xx)
+        # print(len(str(mysumEnc)))
+        # print(((mysumEnc % p) % powerInt)/1000)
+        mycursor.close()
+        
+        diff = time.time() - start
+        strd =  diff
+        print(strd)
+        i = i+1
+    # print(mysum)
+    # print("=====")
+    # print(len(mysumEnc))
+    # print(((mysumEnc % p) % power(2,l))/1000)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : strd 
+        # "data" : str(myresult)
+
+    })  
+
 @app.route("/get/simple/all/sum" , methods = ['GET'])
 def getallraw20000sum():
     start = time.time()
