@@ -289,7 +289,7 @@ def getallsimple20000sum():
     })  
 
 @app.route("/get/dghv/all/sum" , methods = ['GET'])
-def getallsimple20000sum():
+def getalldghv20000sum():
     i = 0
     while i < 5:
         mysum = 0
