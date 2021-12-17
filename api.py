@@ -119,8 +119,8 @@ def getalldghv20000():
         rows = request.args.get('rows')
         print(rows)
         mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
-
         myresult = mycursor.fetchall()
+        print(len(myresult))
         diff = time.time() - start
         strd =  str(diff)
         print(strd)
