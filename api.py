@@ -111,17 +111,21 @@ def getallraw20000():
 
 @app.route("/get/dghv/all" , methods = ['GET'])
 def getalldghv20000():
-    start = time.time()
+    i = 0
+    while i < 5 :
+        start = time.time()
 
-    mycursor = mydb.cursor()
-    rows = request.args.get('rows')
-    print(rows)
-    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
+        mycursor = mydb.cursor()
+        rows = request.args.get('rows')
+        print(rows)
+        mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
 
-    myresult = mycursor.fetchall()
-    diff = time.time() - start
-    strd =  str(diff)
-    # cache.clear()
+        myresult = mycursor.fetchall()
+        diff = time.time() - start
+        strd =  str(diff)
+        print(strd)
+        i=i+1
+        # cache.clear()
         
     return jsonify({ 
         "status": "success",
