@@ -1,7 +1,7 @@
 from flask import Flask , jsonify , request
 from decimal import Decimal
 import psutil
-
+import os
 
 
 # from flask_restful import Api
@@ -487,6 +487,9 @@ def getallraw20000avg():
         print(psutil.cpu_percent())
         print(psutil.virtual_memory())  # physical memory usage
         print('memory % used:', psutil.virtual_memory()[2])
+        print("============================")
+        process = psutil.Process(os.getpid())
+        print(process.memory_info().rss)  # in bytes 
 
         i = i + 1
             
