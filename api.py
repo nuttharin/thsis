@@ -490,6 +490,7 @@ def getallraw20000avg():
         print("============================")
         process = psutil.Process(os.getpid())
         print(process.memory_info().rss)  # in bytes 
+        print(psutil.Process(os.getpid()).memory_info().rss / 1024 ** 2)
 
         i = i + 1
             
