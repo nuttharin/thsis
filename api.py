@@ -449,7 +449,7 @@ def getallsimple20000avg():
 @app.route("/get/simple/all/avg" , methods = ['GET'])
 def getallraw20000avg():
     i = 0
-    while i<5 :
+    while i<1 :
         start = time.time()
 
         mycursor = mydb.cursor()
@@ -472,11 +472,12 @@ def getallraw20000avg():
         # gives an object with many fields
         psutil.virtual_memory()
         # you can convert that object to a dictionary 
-        print(dict(psutil.virtual_memory()._asdict()))
+        # print(dict(psutil.virtual_memory()._asdict()))
         # you can have the percentage of used RAM
-        print(psutil.virtual_memory().percent)
+        # print(psutil.virtual_memory().percent)
         # 79.2
         # you can calculate percentage of available memory
+        print("ram %")
         print(psutil.virtual_memory().available * 100 / psutil.virtual_memory().total)
         print("total")
         print(psutil.virtual_memory().total)
