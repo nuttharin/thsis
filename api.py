@@ -460,8 +460,8 @@ def getallraw20000avg():
         myresult = mycursor.fetchone()
         # print(myresult[0])
 
-        # diff = time.time() - start
-        # strd =  diff
+        diff = time.time() - start
+        strd =  diff
         # print(strd)
         mycursor.close()
         i = i + 1
