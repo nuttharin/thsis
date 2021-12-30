@@ -460,12 +460,13 @@ def getallraw20000avg():
         myresult = mycursor.fetchone()
         # print(myresult[0])
 
-        diff = time.time() - start
-        strd =  diff
-        print(strd)
+        # diff = time.time() - start
+        # strd =  diff
+        # print(strd)
         mycursor.close()
         i = i + 1
 
+        print("ram")
         # cache.clear()
         print(psutil.cpu_percent())
         # gives an object with many fields
@@ -477,6 +478,7 @@ def getallraw20000avg():
         # 79.2
         # you can calculate percentage of available memory
         print(psutil.virtual_memory().available * 100 / psutil.virtual_memory().total)
+        print("total")
         print(psutil.virtual_memory().total)
         print(psutil.virtual_memory().available)
         # 20.8
