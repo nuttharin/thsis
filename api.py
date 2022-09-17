@@ -66,6 +66,9 @@ def testX():
         "data" : str(myresult)
     })  
 
+
+# ================= GET ======================================
+
 @app.route("/get/enc/all" , methods = ['GET'])
 def getallsimple20000():
     start = time.time()

@@ -34,60 +34,14 @@ q= 99
 r= 251314668
 
 
-# mycursor = mydb.cursor()
-# # query = "SELECT * FROM `DGHV`.`austin_weather` LIMIT 0,100"
-# query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 1 AND 200000"
-# # query = "SELECT * FROM `WHO-COVID-19-global-data`"
 
-# mycursor.execute(query)
-
-# myresult = mycursor.fetchall()
-# print(len(myresult))
-# print(myresult)
-# print(myresult[1])
-# # INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_20000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES ('1', 1, 1, 1, '1')
-# query2 = "INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_raw_200000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES  "
-# queryValue = ""
-# arrM = []
-# j = 0
-# countx = 1
-
-# for x in myresult:
-#     # c = p*q + power(2,l) *r +m    
-#     i = 0 
-#     while i < len(x) :       
-#         arrM.append(x[i])        
-#         i = i + 1
-
-#     txt = "('{}', {},{},{}, '{}')"   
-#     txt = txt.format(str(arrM[0]),str(arrM[1]),str(arrM[2]),str(arrM[3]),str(arrM[4]))
-#     print(str(countx)+" ==== "+txt)
-#     queryValue = queryValue + txt
-#     if j < len(myresult) -1 :
-#         queryValue =  queryValue + " , " 
-#     txt = ""
-#     arrM = []
-#     # print(queryValue)
-#     j=j+1
-#     countx = countx + 1
-# query2 = query2 + queryValue 
-
-
-# mycursor = mydb.cursor()
-
-
-# mycursor.execute(query2)
-
-# mydb.commit()
-
-# print(mycursor.rowcount, "record inserted.")
 
 
 
 
 mycursor = mydb.cursor()
 # query = "SELECT * FROM `DGHV`.`austin_weather` LIMIT 0,100"
-query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 100001 AND 200000"
+query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 1 AND 10"
 # query = "SELECT * FROM `WHO-COVID-19-global-data`"
 
 mycursor.execute(query)
@@ -118,19 +72,21 @@ for x in myresult:
                 m = '{0:b}'.format(x[i] * 1000)
             
             # positive_binary = '{0:b}'.format(m)
-            # print(str(x[i])+"===="+str(m)+"===="+m)
+            print(str(x[i])+"===="+str(m)+"===="+m)
+
 
             # c = p * q + power(2,l) * r + m
             
             # d = (c % p) % power(2,l)
             arrM.append(Decimal(m))            
-            print( str(countx) + "==== " + str(i) + "====" +str(m) )
+            # print( str(countx) + "==== " + str(i) + "====" +str(m) )
         else : 
             arrM.append(x[i])
         
         i = i + 1
     txt = "('{}', {},{},{}, '{}')"   
     txt = txt.format(str(arrM[0]),str(arrM[1]),str(arrM[2]),str(arrM[3]),str(arrM[4]))
+    
     print(txt)
     queryValue = queryValue + txt
     if j < len(myresult) -1 :
@@ -142,17 +98,17 @@ for x in myresult:
     countx = countx + 1
 
 
-query2 = query2 + queryValue 
+# query2 = query2 + queryValue 
 
 
-mycursor1 = mydb.cursor()
+# mycursor1 = mydb.cursor()
 
 
-mycursor1.execute(query2)
+# mycursor1.execute(query2)
 
-mydb.commit()
+# mydb.commit()
 
-print(mycursor1.rowcount, "record inserted.")
+# print(mycursor1.rowcount, "record inserted.")
 
 # 81000000000009467427
 # 1620000000000189916540
