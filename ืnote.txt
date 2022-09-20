@@ -1,3 +1,4 @@
-IoT.Input.SinghaS1.17_dghv_200000 original DGHV == soil_dghv
+IoT.Input.SinghaS1.17_dghv_200000  DGHV == soil_dghv (ยังไม่เข้ารหัส)
 IoT.Input.SinghaS1.17_raw_20000 raw
 IoT.Input.SinghaS1.17_20000 new DGhV == soil_new_dghv
+IoT.Input.SinghaS1.17_dghv_original_200000  DGHV == soil_dghv_original
