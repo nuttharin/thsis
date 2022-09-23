@@ -2,6 +2,7 @@ from flask import Flask , jsonify , request
 from decimal import Decimal
 import psutil
 import os
+# import numpy as np
 
 
 # from flask_restful import Api
@@ -67,6 +68,7 @@ def testX():
     })  
 
 
+#region GET
 # ================= GET ======================================
 
 @app.route("/get/enc/all" , methods = ['GET'])
@@ -137,26 +139,32 @@ def getalldghv20000():
         # ,"data" :str(myresult)
     })  
 
-@app.route("/get/dghv/all" , methods = ['GET'])
-def getallencDGHV():
+@app.route("/get/dghv_original/all" , methods = ['GET'])
+def getallencDGHVoriginal():
     start = time.time()
 
     mycursor = mydb.cursor()
-
-    mycursor.execute("SELECT * FROM `IoT.Input.SinghaS1.17_dghv_"+str(rows)+"`")
-
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor.execute("SELECT * `FROM IoT.Input.SinghaS1.17_dghv_original_"+str(rows)+"`")
     myresult = mycursor.fetchall()
+    print(len(myresult))
     diff = time.time() - start
     strd =  str(diff)
-
+    print(strd)
+    # cache.clear()
         
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
         "time" : strd 
-        # ,"data" : str(myresult)
-    })  
+        # ,"data" :str(myresult)
+    })   
 
+#endregion
+
+
+#region MAX
 # ================= MAX ======================================
 @app.route("/get/enc/all/max" , methods = ['GET'])
 def getallsimple20000max():
@@ -205,7 +213,60 @@ def getallraw20000max():
         "time" : strd 
         # ,"data" :str(myresult)
     })  
+
+@app.route("/get/dghv_original/all/max" , methods = ['GET'])
+def getallsimple20000max():
+    start = time.time()
+    rows = request.args.get('rows')
+    print(rows)
+    mycursor = mydb.cursor()
+
+    mycursor.execute("SELECT soil1 as maxv FROM `IoT.Input.SinghaS1.17_dghv_original_"+str(rows)+"`")
+
+    myresult = mycursor.fetchall()
+    # print(myresult[0])
+
+    # d = ((myresult[0] % p) % power(2,l))/1000
+    # diff = time.time() - start
+    # strd =  diff
+    # print(d)
+    p_key = 251312513125131
+    i = 0
+    j = 0
+    tempData = ""
+    deCipherConnect = ""
+    arrM = []
+    maxValue = 0
+    
+    while i < len(myresult) :
+        tempData = myresult[i]["soil1"]
+        cipherArr = tempData.split(",")
+
+        while j < len(cipherArr) :
+            deCipherConnect = deCipherConnect+ str((int(cipherArr[i]) % p_key) % 2)
+            j=j+1
+        
+        i=i+1
+        print(int(deCipherConnect,2))
+        arrM.append(int(deCipherConnect,2))  
+
+    maxValue = max(arrM)         
+    print(maxValue)
+      
+    return jsonify({ 
+        "status": "success",
+        "statusCode": 201 ,
+        "time" : maxValue 
+        # "data" : str(myresult)
+
+    })
+
 # ============================================================
+
+#endregion
+
+
+
 
 # ================= MIN ======================================
 @app.route("/get/enc/all/min" , methods = ['GET'])

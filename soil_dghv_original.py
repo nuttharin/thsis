@@ -33,8 +33,8 @@ r= 25131
 
 
 
-y = 0
-maxRows = 40000
+y = 160000
+maxRows = 200000
 while y < maxRows :
     if y == 0 :
         y = 1
@@ -42,9 +42,10 @@ while y < maxRows :
     else :
         rows = "BETWEEN "+str(y)+" AND "+str(y+10000)
 
+    print(rows)
     mycursor = mydb.cursor()
     # query = "SELECT * FROM `DGHV`.`austin_weather` LIMIT 0,100"
-    query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn BETWEEN 1 AND 10000"
+    query = "SELECT t2.id , t2.soil1 , t2.soil2 ,t2.bat , t2.dataTime FROM ( SELECT t.*, @rownum := @rownum + 1 AS rn FROM `IoT.Input.SinghaS1.17` as t , (SELECT @rownum := 0) r ) t2 WHERE t2.rn "+rows
     # query = "SELECT * FROM `WHO-COVID-19-global-data`"
 
     mycursor.execute(query)
@@ -54,7 +55,7 @@ while y < maxRows :
     # print(myresult)
     # print(myresult[1])
     # INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_20000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES ('1', 1, 1, 1, '1')
-    query2 = "INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_dghv_original_40000`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES  "
+    query2 = "INSERT INTO `DGHV`.`IoT.Input.SinghaS1.17_dghv_original_"+str(maxRows)+"`(`id`, `soil1`, `soil2`, `bat`, `dataTime`) VALUES  "
     queryValue = ""
     arrM = []
     j = 0
@@ -116,6 +117,9 @@ while y < maxRows :
 
     query2 = query2 + queryValue 
     # print(query2)
+    f = open("demofile2.txt", "a")
+    f.write(query2)
+    f.close()
 
     mycursor1 = mydb.cursor()
 
