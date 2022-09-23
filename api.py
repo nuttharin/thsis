@@ -215,21 +215,21 @@ def getallraw20000max():
     })  
 
 @app.route("/get/dghv_original/all/max" , methods = ['GET'])
-def getallsimple20000max():
+def getdghvOriginal20000max():
+    print("getdghvOriginal20000max")
     start = time.time()
     rows = request.args.get('rows')
     print(rows)
     mycursor = mydb.cursor()
 
-    mycursor.execute("SELECT soil1 as maxv FROM `IoT.Input.SinghaS1.17_dghv_original_"+str(rows)+"`")
+    # mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_dghv_original_"+str(rows)+"`")
+    mycursor.execute("SELECT soil1 FROM `IoT.Input.SinghaS1.17_dghv_original`")
+
 
     myresult = mycursor.fetchall()
     # print(myresult[0])
+   
 
-    # d = ((myresult[0] % p) % power(2,l))/1000
-    # diff = time.time() - start
-    # strd =  diff
-    # print(d)
     p_key = 251312513125131
     i = 0
     j = 0
@@ -237,11 +237,18 @@ def getallsimple20000max():
     deCipherConnect = ""
     arrM = []
     maxValue = 0
-    
-    while i < len(myresult) :
-        tempData = myresult[i]["soil1"]
-        cipherArr = tempData.split(",")
+    # print(myresult[i])
+    # return jsonify({ 
+    #     "status": "success",
+    #     "statusCode": 201 ,
+    #     "time" : myresult[i] 
+    #     # "data" : str(myresult)
 
+    # })
+    while i < len(myresult) :
+        tempData = myresult[i][0]
+        cipherArr = tempData.split(",")
+        # print(len(cipherArr))
         while j < len(cipherArr) :
             deCipherConnect = deCipherConnect+ str((int(cipherArr[i]) % p_key) % 2)
             j=j+1
@@ -252,11 +259,13 @@ def getallsimple20000max():
 
     maxValue = max(arrM)         
     print(maxValue)
+    diff = time.time() - start
+    strd =  diff
       
     return jsonify({ 
         "status": "success",
         "statusCode": 201 ,
-        "time" : maxValue 
+        "time" : strd 
         # "data" : str(myresult)
 
     })
@@ -568,7 +577,7 @@ def getallraw20000avg():
 # ============================================================
 if __name__ == "__main__":
     app.run(host= "10.0.0.3" ,debug=True , port=5000)
-    # app.run(host="192.168.0.103" ,debug=True , port=5000)
+    # app.run(host="192.168.0.112" ,debug=True , port=5000)
 
     # app.run(debug=True , port=5000)
 print("start")
